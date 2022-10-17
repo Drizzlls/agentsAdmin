@@ -1,0 +1,71 @@
+{% extends 'forms/base.html' %}
+
+{% block content %}
+
+<div class="row">
+					<div class="col-xl-7 mx-auto">
+						<h6 class="mb-0 text-uppercase">Форма</h6>
+						<hr>
+						<div class="card border-top border-0 border-4 border-primary">
+							<div class="card-body p-5">
+								<div class="card-title d-flex align-items-center">
+									<div><i class="bx bxs-user me-1 font-22 text-primary"></i>
+									</div>
+									<h5 class="mb-0 text-primary">Оставить заявку</h5>
+								</div>
+								<hr>
+								<form class="row g-3" method="post" id="Form">
+									{% csrf_token %}
+									<div class="col-md-6">
+										<label for="NAME" class="form-label">Имя</label>
+										<input type="text" class="form-control" id="NAME" name="NAME" required>
+									</div>
+									<div class="col-md-6">
+										<label for="LAST_NAME" class="form-label">Фамилия</label>
+										<input type="text" class="form-control" id="LAST_NAME" name="LAST_NAME" required>
+									</div>
+									<div class="col-md-6">
+										<label for="PHONE" class="form-label">Номер телефона</label>
+										<input type="text" class="form-control" id="PHONE" name="PHONE" required>
+									</div>
+									<div class="col-md-6">
+										<label for="AGENT" class="form-label">ID Агента</label>
+										<input type="text" class="form-control" id="AGENT" value="{{AGENT}}" name="AGENT" readonly>
+									</div>
+
+									<div class="col-12">
+										<button type="submit" class="btn btn-primary px-5">Отправить заявку</button>
+									</div>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#Form').submit(function () {
+            $.ajax({
+                data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: '{% url 'checkForm' %}',
+                beforeSend: function() {
+
+
+                },
+                success: function (response) {
+      			 if (response == "True") {
+                alert('Все ок!');
+                } else {
+                alert(response); }
+                },
+
+            });
+            return false;
+        });
+    })
+</script>
+{% endblock %}
