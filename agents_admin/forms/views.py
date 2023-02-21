@@ -50,8 +50,8 @@ class FormProcessing:
                         "OPENED": "Y",
                         "PHONE": [{"VALUE": self.data['PHONE'], "VALUE_TYPE": "WORK"}],
                         "ASSIGNED_BY_ID" : getAgent.personalManager.idFromBitrix,
-                        "UF_CRM_1665931974" : getAgent.idFromBitrix,
-                        "UF_CRM_1665932001" : getAgent.idDeal
+                        "UF_CRM_1674717838" : getAgent.idFromBitrix,
+                        "UF_CRM_1674717865" : getAgent.idDeal
                     }
                 )
                 return True

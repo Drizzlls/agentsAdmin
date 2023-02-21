@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Managers.apps.ManagersConfig',
     'bitrix.apps.BitrixConfig',
     'forms.apps.FormsConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
