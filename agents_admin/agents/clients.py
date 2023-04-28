@@ -17,7 +17,8 @@ class AgentFromClient:
             agent = AgentProcessing(idContact = self.idContact, idManager=manager, idDeal=self.idDeal).getAgent()
             return agent
         except Exception as e:
-            return HttpResponse(e)
+            print(e)
+            return 'Ошибка'
 
 
     def wasTrained(self):
