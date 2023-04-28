@@ -29,10 +29,9 @@ class AgentFromClient:
             return HttpResponse(get)
 
 
-class AgentProcessing:
+class AgentProcessing(DataAPIBitrix24):
     def __init__(self, idContact, idManager, idDeal):
         self.idContact = idContact
-        self.bitrix = DataAPIBitrix24()
         self.idManager = idManager
         self.idDeal = idDeal
 
@@ -40,7 +39,7 @@ class AgentProcessing:
     def getAgent(self):
         if self.checkInBitrix():
             try:
-                get = self.bitrix._B.callMethod('crm.contact.get', ID=self.idContact)
+                get = DataAPIBitrix24._B.callMethod('crm.contact.get', ID=self.idContact)
                 self.saveAgent(data = get)
                 return 'Агент добавлен'
             except Exception as e:

@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-bmj*b@_^5u*8hs-xy(whf%nbn+f77*6bw6-vhs5d147k^_da%7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["tbot.spisat-kredit.ru", "www.tbot.spisat-kredit.ru"]
+# ALLOWED_HOSTS = ["tbot.spisat-kredit.ru", "www.tbot.spisat-kredit.ru"]
+ALLOWED_HOSTS = []
 
 
 # Application definition

@@ -11,6 +11,7 @@ class ManagerProcessing:
     def checkInBitrix(self):
         get = self.bitrix._B.callMethod("user.get", ID=self.id)
         if not get:
+            print('Такого менеджера нет')
             raise NameError('Менеджера с таким ID в Битрикс24 отсутствует')
         else:
             return self.setManager(get)
