@@ -7,3 +7,6 @@ class ClietnAgentSerializer(serializers.Serializer):
 
 class EducationClietnAgentSerializer(serializers.Serializer):
     idDeal = serializers.IntegerField()
+
+class DataFromMessageSerializer(serializers.Serializer):
+    idDeal = serializers.IntegerField()

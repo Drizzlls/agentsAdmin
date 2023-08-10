@@ -4,11 +4,12 @@ from .models import Agent
 from bitrix.views import DataAPIBitrix24
 import pprint
 from Managers.views import ManagerProcessing
-from .serializers import ClietnAgentSerializer, EducationClietnAgentSerializer
+from .serializers import ClietnAgentSerializer, EducationClietnAgentSerializer, DataFromMessageSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .clients import AgentFromClient, clientEndEducation, clientStartEducation
 from .agentsDirection import agentEndEducation, agentStartEducation
+from .message import DataFromMessageClass
 
 
 class AddAgentForClient(APIView):
@@ -19,6 +20,7 @@ class AddAgentForClient(APIView):
                                idContact=request.data['idContact']).agentRegistration()
         clientStartEducation(idDeal=request.data['idDeal'])
         return Response(data)
+
 
 class EducationAgentForClient(APIView):
     def post(self, request):
@@ -45,6 +47,12 @@ class EducationAgentForDirection(APIView):
         data = agentEndEducation(idDeal=request.data['idDeal'])
         return Response(data)
 
+class DataFromMessage(APIView):
+    def post(self, request):
+        serializer = DataFromMessageSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = DataFromMessageClass(idDeal=request.data['idDeal']).getData()
+        return Response(data)
 
 
 
