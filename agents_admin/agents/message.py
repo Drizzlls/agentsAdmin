@@ -17,7 +17,7 @@ class DataFromMessageClass:
     def dataAssigned(self):
         get = DataAPIBitrix24._B.callMethod('user.get', ID=self.IdAssigned())
         return {
-            "phone": get[0]['WORK_PHONE'],
+            "phone": get[0].get('WORK_PHONE',''),
             "name": get[0]['NAME']
         }
 
