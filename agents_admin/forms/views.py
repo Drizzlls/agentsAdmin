@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from agents.models import Agent
 from Managers.models import Manager
 from bitrix.views import DataAPIBitrix24
+from .treatmentData import FormData
 
 
 def pageForm(request, idAgent):
@@ -15,6 +16,12 @@ def checkForm(request):
         return HttpResponse('True')
     else:
         return HttpResponse(agent)
+
+def checkFormNew(request):
+    """ Новый обработчик """
+    agent = FormData(idDeal=request.POST['AGENT'], data=request.POST).addLeadFromBitrix()
+    return HttpResponse('True')
+
 
 
 def index(request):
